@@ -18,14 +18,20 @@ jobs:
         with:
           node-version: 18
 
-      - name: Setup Java 17 (Required for Android SDK)
+      - name: Setup Java 17 temporarily for Android SDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '17'  # Changed from 11 to 17
+          java-version: '17'
 
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+
+      - name: Switch back to Java 11 for building
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
 
       - name: Install dependencies
         run: npm ci
