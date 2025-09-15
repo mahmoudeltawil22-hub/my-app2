@@ -33,10 +33,6 @@ jobs:
       - name: Sync Capacitor Android
         run: npx cap sync android
 
-      # ✅ Fix: force Gradle to use Java 17
-      - name: Set Java 17 for Gradle
-        run: echo "org.gradle.java.home=$JAVA_HOME" >> android/gradle.properties
-
       - name: Build Android APK
         run: |
           cd android
